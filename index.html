@@ -3,8 +3,26 @@
 <head>
 	<title>Email Scraper</title>
 	<script src="./script.js"></script>
+	<style>
+		textarea{
+			width:300px;
+			height:500px;
+			font-family:monospace;
+			white-space:pre;
+		}
+	</style>
 </head>
 <body>
-	<input type="file" id="uploader" />
+	<h1>Robin's Fancy E-mail Scraper</h1>
+	<p>
+		<label>
+			Upload an .olm file:
+			<input type="file" id="uploader" />
+		</label>
+	</p>
+	<p>(This data isn't actually uploaded anywhere &mdash; it exists only on your computer.)</p>
+	<p>If there are a lot of e-mails, this may cause the page to freeze up for a bit.</p>
+	<p>A list of e-mails will show up here:</p>
+	<textarea id="output" disabled></textarea>
 </body>
 </html>
