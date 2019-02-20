@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	const emailMatcher = /[a-z0-9_-]+(?:\.[a-z0-9_-]+)*@[a-z0-9_-]+(?:\.[a-z0-9]+)+/
 	const emailFinder = new RegExp(`(?:OPFContactEmailAddressAddress="|mailto:)(${emailMatcher.source})`, 'gi')
 
-	uploader.addEventListener('input', (event)=>{
+	uploader.addEventListener('change', (event)=>{
 		try{
 			handleUpload()
 		}catch(error){
