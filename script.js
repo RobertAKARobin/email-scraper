@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', ()=>{
 	const uploader = document.getElementById('uploader')
 	const output = document.getElementById('output')
-	const emailMatcher = /[a-z0-9_-]+(\.[a-z0-9_-]+)*@[a-z0-9_-]+(\.[a-z0-9]+)+/gi
+	const emailMatcher = /[a-z0-9_-]+(?:\.[a-z0-9_-]+)*@[a-z0-9_-]+(?:\.[a-z0-9]+)+/
+	const emailFinder = new RegExp(`(?:OPFContactEmailAddressAddress="|mailto:)(${emailMatcher.source})`, 'gi')
 
 	uploader.addEventListener('input', (event)=>{
 		try{
@@ -19,9 +20,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 				const response = res.clone()
 				const text = await response.text()
 				const emails = {}
-				const matches = text.match(emailMatcher)
-				matches.forEach(match => {
-					emails[match] = 1
+				text.replace(emailFinder, (nil, email)=>{
+					emails[email] = 1
 				})
 				const result = Object.keys(emails).sort((a,b)=>{
 					return a.toLowerCase().localeCompare(b.toLowerCase())
